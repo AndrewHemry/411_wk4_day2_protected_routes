@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card, CardContent, CardActions, Divider } from '@mui/material'
-import cars from '../cars.json'
+// import cars from '../cars.json'
+import cars from '../redux/state'
 
-const Home = () => {
-    console.log('CARS', cars)
+const Home = (props) => {
+    console.log('CARS', props)
     return (
         <div className="card-container">
-            {cars.map((car, idx) => (
+            {props.cars.map((car, idx) => (
                 <Card key={idx} className="card">
                     <CardContent className="text-gray">
                         <span>{car.Name.toUpperCase()}</span>
@@ -22,7 +23,7 @@ const Home = () => {
                     <CardActions style={{ color: 'mediumblue' }}>
                         <Link to={`/car/${car.id}`}>See More Details</Link>
                     </CardActions>
-                </Card>
+                </Card> 
             ))}
         </div>
     )
